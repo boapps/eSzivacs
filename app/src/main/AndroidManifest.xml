@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.boapps.eSzivacs">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activities.MainPage"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".Activities.Timetable"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_activity_timetable"
+            android:parentActivityName=".Activities.MainPage"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.LessonsActivity"
+            android:label="@string/title_activity_lessons"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+
+        <receiver android:name=".Widget.WidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_info" />
+        </receiver>
+
+        <service
+            android:name=".Widget.WidgetService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <activity
+            android:name=".Activities.StudentActivity"
+            android:label="@string/title_activity_student"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.LessonsListActivity"
+            android:label="@string/title_activity_lessons_list"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.AbsentsActivity"
+            android:label="@string/title_activity_absents"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".Activities.MainPage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.EventActivity"
+            android:label="@string/title_activity_event"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.NotesActivity"
+            android:label="@string/title_activity_notes"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.AccountsActivity"
+            android:label="@string/title_activity_accounts"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+
+        <service
+            android:name=".Utils.BackgroundTaskService"
+            android:exported="true"
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".Activities.EvaluationListActivity"
+            android:label="@string/title_activity_evaluation_list"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity
+            android:name=".Activities.ChangelogActivity"
+            android:label="@string/title_activity_changelog"
+            android:parentActivityName=".Activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.boapps.eSzivacs.Activities.MainPage" />
+        </activity>
+        <activity android:name=".Activities.MilennehaSelect" />
+        <activity
+            android:name=".Activities.HaKapnekEgy"
+            android:label="@string/title_activity_ha_kapnek_egy"
+            android:theme="@style/AppTheme"></activity>
+    </application>
+
+</manifest>

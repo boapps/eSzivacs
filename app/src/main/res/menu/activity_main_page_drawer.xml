@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:checkableBehavior="none"
+        android:enabled="true"
+        android:visible="true">
+        <item
+            android:id="@+id/student"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="@string/title_activity_student" />
+        <item
+            android:id="@+id/main"
+            android:icon="@drawable/ic_school_black_24px"
+            android:title="@string/title_activity_evaluations" />
+        <item
+            android:id="@+id/milenneha"
+            android:icon="@drawable/ic_school_black_24px"
+            android:title="Mi lenne ha..." />
+        <item
+            android:id="@+id/timetable"
+            android:icon="@drawable/ic_date_range_black_24px"
+            android:title="@string/title_activity_timetable" />
+        <item
+            android:id="@+id/events"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="@string/title_activity_event" />
+        <item
+            android:id="@+id/notes"
+            android:icon="@drawable/ic_speaker_notes_black_24dp"
+            android:title="@string/title_activity_notes" />
+        <item
+            android:id="@+id/absent"
+            android:icon="@drawable/ic_not_interested_black_24px"
+            android:title="@string/title_activity_absents" />
+        <item
+            android:id="@+id/lessons"
+            android:icon="@drawable/ic_assessment_black_24dp"
+            android:title="@string/title_activity_lessons" />
+        <item
+            android:id="@+id/accounts"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="@string/title_activity_accounts" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/title_activity_settings" />
+        <!--<item-->
+        <!--android:id="@+id/delete_kreta"-->
+        <!--android:icon="@drawable/ic_delete_forever_black_24dp"-->
+        <!--android:title="@string/delete_kreta_string" />-->
+    </group>
+
+    <item
+        android:enabled="true"
+        android:title="Communicate"
+        android:visible="true">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/title_menu_share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/title_menu_send" />
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/ic_info_outline_black_24px"
+                android:title="@string/title_activity_about" />
+            <item
+                android:id="@+id/changelog"
+                android:icon="@drawable/ic_assignment_black_24dp"
+                android:title="Changelog" />
+        </menu>
+    </item>
+
+</menu>
