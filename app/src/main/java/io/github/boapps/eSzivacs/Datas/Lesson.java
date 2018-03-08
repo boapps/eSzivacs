@@ -9,6 +9,7 @@ import java.util.Date;
 public class Lesson {
     private int id;
     private int count;
+    private int oraszam;
     private Date date;
     private Date start;
     private Date end;
@@ -24,10 +25,12 @@ public class Lesson {
     private String presenceName;
     private String theme;
     private String homework;
+    private String calendarOraType;
 
-    public Lesson(int id, int count, Date date, Date start, Date end, String subject, String subjectName, String room, String group, String teacher, String depTeacher, String state, String stateName, String presence, String presenceName, String theme, String homework) {
+    public Lesson(int id, int count, int oraszam, Date date, Date start, Date end, String subject, String subjectName, String room, String group, String teacher, String depTeacher, String state, String stateName, String presence, String presenceName, String theme, String homework, String calendarOraType) {
         this.id = id;
         this.count = count;
+        this.oraszam = oraszam;
         this.date = date;
         this.start = start;
         this.end = end;
@@ -43,6 +46,7 @@ public class Lesson {
         this.presenceName = presenceName;
         this.theme = theme;
         this.homework = homework;
+        this.calendarOraType = calendarOraType;
     }
 
     public int getId() {
@@ -59,6 +63,14 @@ public class Lesson {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getOraszam() {
+        return oraszam;
+    }
+
+    public void setOraszam(int oraszam) {
+        this.oraszam = oraszam;
     }
 
     public Date getDate() {
@@ -179,6 +191,14 @@ public class Lesson {
 
     public void setHomework(String homework) {
         this.homework = homework;
+    }
+
+    public String getCalendarOraType() {
+        return calendarOraType;
+    }
+
+    public void setCalendarOraType(String calendarOraType) {
+        this.calendarOraType = calendarOraType;
     }
 
 }

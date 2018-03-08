@@ -192,8 +192,18 @@ public class DataLoader {
                 String presenceName = jArray.getJSONObject(n).getString("PresenceTypeName");
                 String theme = jArray.getJSONObject(n).getString("Theme");
                 String homework = jArray.getJSONObject(n).getString("Homework");
+                String calendarOraType = jArray.getJSONObject(n).getString("CalendarOraType");
 
-                Lesson lesson = new Lesson(id, count, date, start, end, subject, subjectName, room, group, teacher, depTeacher, state, stateName, presence, presenceName, theme, homework);
+
+                int oraSzam = 0;
+//                for (Lesson lessonItem:lessons){
+//                    if (lessonItem.getSubject().equals(subject))
+//                        oraSzam++;
+//                }
+//
+//                System.out.println("oraszam: " + oraSzam);
+
+                Lesson lesson = new Lesson(id, count, oraSzam, date, start, end, subject, subjectName, room, group, teacher, depTeacher, state, stateName, presence, presenceName, theme, homework, calendarOraType);
                 lessons.add(lesson);
             }
 
@@ -265,8 +275,18 @@ public class DataLoader {
                 String presenceName = jArray.getJSONObject(n).getString("PresenceTypeName");
                 String theme = jArray.getJSONObject(n).getString("Theme");
                 String homework = jArray.getJSONObject(n).getString("Homework");
+                String calendarOraType = jArray.getJSONObject(n).getString("CalendarOraType");
 
-                Lesson lesson = new Lesson(id, count, date, start, end, subject, subjectName, room, group, teacher, depTeacher, state, stateName, presence, presenceName, theme, homework);
+                int oraSzam = 0;
+//                for (Lesson lessonItem:lessons){
+//                    if (lessonItem.getSubject().equals(subject))
+//                        oraSzam++;
+//                }
+//
+//                System.out.println("oraszam: " + oraSzam);
+
+
+                Lesson lesson = new Lesson(id, count, oraSzam, date, start, end, subject, subjectName, room, group, teacher, depTeacher, state, stateName, presence, presenceName, theme, homework, calendarOraType);
                 lessons.add(lesson);
                 System.out.println(lesson.getSubjectName() + lesson.getId() + lesson.getState() + lesson.getStart() + lesson.getCount());
 

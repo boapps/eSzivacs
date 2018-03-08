@@ -93,5 +93,6 @@
     </string-array>
     <string name="delete_kreta_string">Kréta letörlése</string>
     <string name="title_activity_changelog">Changelog</string>
+    <string name="title_activity_ha_kapnek_egy">Ha kapnék egy...</string>
 
 </resources>
