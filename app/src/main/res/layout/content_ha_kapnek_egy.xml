@@ -8,6 +8,22 @@
     tools:context="io.github.boapps.eSzivacs.Activities.HaKapnekEgy"
     tools:showIn="@layout/activity_ha_kapnek_egy">
 
+    <TextView
+        android:id="@+id/avarage_hakap_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Átlag:"
+        app:layout_constraintBottom_toTopOf="@+id/editlv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ListView
         android:id="@+id/editlv"
         android:layout_width="0dp"
@@ -19,5 +35,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/avarage_hakap_tv" />
 </android.support.constraint.ConstraintLayout>

@@ -15,7 +15,6 @@ import android.widget.ListView;
 import io.github.boapps.eSzivacs.Datas.Subject;
 import io.github.boapps.eSzivacs.R;
 
-import static io.github.boapps.eSzivacs.Activities.MainPage.lessons;
 import static io.github.boapps.eSzivacs.Activities.MainPage.subjects;
 
 public class MilennehaSelect extends AppCompatActivity {
@@ -35,7 +34,7 @@ public class MilennehaSelect extends AppCompatActivity {
         });
     }
 
-
+    AlertDialog.Builder alertDialogBuilder;
     public void SelectDialog() {
         System.out.print("CODERUN");
         if (selectdialog == null) {
@@ -43,51 +42,18 @@ public class MilennehaSelect extends AppCompatActivity {
             View selDialog = li.inflate(R.layout.vegi_dialog,
                     null);
 
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setView(selDialog);
-//                    alertDialogBuilder.setNegativeButton(getString(R.string.title_menu_share), new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            Intent sendIntent = new Intent();
-//                            sendIntent.setAction(Intent.ACTION_SEND);
-//                            sendIntent.putExtra(Intent.EXTRA_TEXT, evaluation.getSubject() + " - " + evaluation.getNumericValue());
-//                            sendIntent.setType("text/plain");
-//                            startActivity(sendIntent);
-//                        }
-//                    });
-
-            selectdialog = alertDialogBuilder.create();
-            selectdialog.setTitle("Tantárgy");
-            selectdialog.show();
-
-            ListView listselect = selectdialog.findViewById(R.id.listvegi);
-            String[] items = new String[subjects.size()];
-            for (Subject subject : subjects)
-                items[subjects.indexOf(subject)] = subject.getSubjectName() + "  -  " + subject.getValue();
-            ArrayAdapter<String> itemsAdapter =
-                    new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, items);
-            listselect.setAdapter(itemsAdapter);
-            listselect.deferNotifyDataSetChanged();
-            listselect.setOnItemClickListener(new ListView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
-                    System.out.println("listviewwasclicked");
-                    System.out.println("clicked: " + position);
-                    System.out.println("clicked: " + lessons.get(position).getSubject());
-                    Intent intent = new Intent(getApplicationContext(), HaKapnekEgy.class);
-                    intent.putExtra("lesson", lessons.get(position).getSubject());
-                    startActivity(intent);
-                }
-            });
 
         } else if (!selectdialog.isShowing()) {
             LayoutInflater li = LayoutInflater.from(this);
             View evsDialog = li.inflate(R.layout.vegi_dialog,
                     null);
 
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+            alertDialogBuilder = new AlertDialog.Builder(
                     this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             alertDialogBuilder.setView(evsDialog);
+        }
 //                    alertDialogBuilder.setNegativeButton(getString(R.string.title_menu_share), new DialogInterface.OnClickListener() {
 //                        @Override
 //                        public void onClick(DialogInterface dialogInterface, int i) {
@@ -106,7 +72,7 @@ public class MilennehaSelect extends AppCompatActivity {
             ListView listselect = selectdialog.findViewById(R.id.listvegi);
             String[] items = new String[subjects.size()];
             for (Subject subject : subjects)
-                items[subjects.indexOf(subject)] = subject.getSubjectName() + "  -  " + subject.getValue();
+                items[subjects.indexOf(subject)] = subject.getSubject() + "  -  " + subject.getValue();
             ArrayAdapter<String> itemsAdapter =
                     new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, items);
             listselect.setAdapter(itemsAdapter);
@@ -116,14 +82,17 @@ public class MilennehaSelect extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
                     System.out.println("listviewwasclicked");
                     System.out.println("clicked: " + position);
-                    System.out.println("clicked: " + lessons.get(position).getSubject());
+                    System.out.println("clicked: " + position);
+                    System.out.println("clicked: " + subjects.get(position).getSubject());
+                    System.out.println("clicked: " + subjects.get(position).getSubjectName());
                     Intent intent = new Intent(getApplicationContext(), HaKapnekEgy.class);
-                    intent.putExtra("lesson", lessons.get(position).getSubject());
+                    intent.putExtra("lesson", subjects.get(position).getSubject());
                     startActivity(intent);
                 }
             });
 
-        }
+
+
     }
 
 }

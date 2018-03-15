@@ -61,6 +61,7 @@ import static java.lang.Thread.sleep;
 
 public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "e-Szivacs";
     public static ArrayList<Lesson> lessons = new ArrayList<>();
     public static Week ttweek = new Week(new Date(), new ArrayList<Lesson>(), new ArrayList<Lesson>(), new ArrayList<Lesson>(), new ArrayList<Lesson>(), new ArrayList<Lesson>());
     public static ArrayList<Evaluation> evaluations = new ArrayList<>();
@@ -419,8 +420,9 @@ public class MainPage extends AppCompatActivity
         mainEvalList = findViewById(R.id.main_evals);
 
 
-        //quickly load offline data if online
+        //quickly load offline data if online so we can display something to the user
         if (isOnline()) {
+
             loadProgress.post(new Runnable() {
                 @Override
                 public void run() {
