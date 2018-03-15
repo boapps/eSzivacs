@@ -141,7 +141,7 @@ public class HaKapnekEgy extends AppCompatActivity {
             count += (Integer.valueOf(evaluation.getWeight().substring(0, evaluation.getWeight().indexOf("%"))) / 100);
         }
         TextView avarageHakapTV = findViewById(R.id.avarage_hakap_tv);
-        avarageHakapTV.setText("Átlag: " + (float) sum / count);
+        avarageHakapTV.setText("Átlag: " + String.format("%.2f", (float) sum / count));
     }
 
 }
