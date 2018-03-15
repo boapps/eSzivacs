@@ -48,7 +48,7 @@ public class MilennehaAdapter extends BaseAdapter {
             view = inflator.inflate(R.layout.milenneha_item, null);
         }
         TextView subjectTV = view.findViewById(R.id.mil_subject_tv);
-        subjectTV.setText(subjects.get(i).getSubject() + "-" + subjects.get(i).getValue());
+        subjectTV.setText(subjects.get(i).getSubject() + " - " + subjects.get(i).getValue());
         return view;
     }
 }

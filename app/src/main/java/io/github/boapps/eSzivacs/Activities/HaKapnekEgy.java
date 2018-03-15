@@ -95,6 +95,7 @@ public class HaKapnekEgy extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
         alertDialogBuilder.setView(evsDialog);
+        alertDialogBuilder.setTitle("Új jegy");
         alertDialogBuilder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

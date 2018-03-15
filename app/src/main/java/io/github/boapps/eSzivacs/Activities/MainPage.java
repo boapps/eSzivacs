@@ -36,7 +36,6 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crash.FirebaseCrash;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -238,17 +237,7 @@ public class MainPage extends AppCompatActivity
             teacherTX.setText(evaluation.getTeacher());
 
             TextView dateTX = dialog.findViewById(R.id.dateTX);
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            try {
-                Date date = format.parse(evaluation.getDate().replace("T00:00:00", ""));
-                System.out.println("Date ->" + date);
-                format.applyLocalizedPattern("yyyy. MM. dd.");
-                dateTX.setText(format.format(date));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } finally {
-//                dateTX.setText(evaluation.getDate());
-            }
+            dateTX.setText(evaluation.getDate());
 
         } else if (!dialog.isShowing()) {
 
@@ -285,17 +274,7 @@ public class MainPage extends AppCompatActivity
             teacherTX.setText(evaluation.getTeacher());
 
             TextView dateTX = dialog.findViewById(R.id.dateTX);
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            try {
-                Date date = format.parse(evaluation.getDate().replace("T00:00:00", ""));
-                System.out.println("Date ->" + date);
-                format.applyLocalizedPattern("yyyy. MM. dd.");
-                dateTX.setText(format.format(date));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } finally {
-//                dateTX.setText(evaluation.getDate());
-            }
+            dateTX.setText(evaluation.getDate());
         }
     }
 

@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -369,6 +370,10 @@ public class DataLoader {
                 String range = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("FormName");
                 String type = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Type");
                 String subject = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Subject");
+                if (form.equals("Deportment"))
+                    subject = "Magatartás";
+                else if (form.equals("Diligence"))
+                    subject = "Szorgalom";
                 String subjectCategory = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("SubjectCategoryName");
                 String mode = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Mode");
                 String weight = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Weight");
@@ -376,6 +381,13 @@ public class DataLoader {
                 String numericValue = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("NumberValue");
                 String teacher = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Teacher");
                 String date = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Date");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy. MM. dd. ");
+                try {
+                    date = format.format(simpleDateFormat.parse(date));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 String creationDate = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("CreatingTime");
                 String theme = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Theme");
 
@@ -474,6 +486,10 @@ public class DataLoader {
                     String range = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("FormName");
                     String type = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Type");
                     String subject = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Subject");
+                    if (form.equals("Deportment"))
+                        subject = "Magatartás";
+                    else if (form.equals("Diligence"))
+                        subject = "Szorgalom";
                     String subjectCategory = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("SubjectCategoryName");
                     String mode = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Mode");
                     String weight = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Weight");
@@ -487,12 +503,12 @@ public class DataLoader {
                     if (type.equals("MidYear")) {
                         Evaluation evaluation = new Evaluation(id, form, range, type, subject, subjectCategory, mode, weight, value, numericValue, teacher, date, creationDate, theme);
                         oldEvaluations.add(evaluation);
-                    } else if (type.equals("HalfYear")) {
+                    } else if (type.equals("HalfYear")) {//todo oldevaluationsfelevi
                         Evaluation evaluation = new Evaluation(id, form, range, type, subject, subjectCategory, mode, weight, value, numericValue, teacher, date, creationDate, theme);
-                        evaluationsfelevi.add(evaluation);
+//                        evaluationsfelevi.add(evaluation);
                     } else if (type.equals("EndYear")) { //todo not sure if the String is "EndYear", just guessing
                         Evaluation evaluation = new Evaluation(id, form, range, type, subject, subjectCategory, mode, weight, value, numericValue, teacher, date, creationDate, theme);
-                        evaluationsevvegi.add(evaluation);
+//                        evaluationsevvegi.add(evaluation);
                     }
                 }
             } catch (JSONException e) {
@@ -532,6 +548,10 @@ public class DataLoader {
                 String range = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("FormName");
                 String type = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Type");
                 String subject = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Subject");
+                if (form.equals("Deportment"))
+                    subject = "Magatartás";
+                else if (form.equals("Diligence"))
+                    subject = "Szorgalom";
                 String subjectCategory = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("SubjectCategoryName");
                 String mode = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Mode");
                 String weight = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Weight");
@@ -539,6 +559,13 @@ public class DataLoader {
                 String numericValue = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("NumberValue");
                 String teacher = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Teacher");
                 String date = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Date");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy. MM. dd. ");
+                try {
+                    date = format.format(simpleDateFormat.parse(date));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 String creationDate = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("CreatingTime");
                 String theme = jObject.getJSONArray("Evaluations").getJSONObject(n).getString("Theme");
 

@@ -42,7 +42,7 @@ public class EvaluationListActivity extends AppCompatActivity {
     public ArrayList<Lesson> lessons;
     public Student user;
     private Dialog dialog;
-    private Dialog vegidialog;
+    //    private Dialog vegidialog;
     private SharedPreferences sharedPreferences;
     private String usr;
     private String psw;
@@ -183,83 +183,34 @@ public class EvaluationListActivity extends AppCompatActivity {
             evvegi.setVisibility(Button.VISIBLE);
         else
             evvegi.setVisibility(Button.INVISIBLE);
-
-
     }
 
     public void VegiDialog(int vegiID) {
-        if (vegidialog == null) {
-            LayoutInflater li = LayoutInflater.from(this);
-            View vegDialog = li.inflate(R.layout.vegi_dialog,
-                    null);
+        Dialog vegidialog;
+        LayoutInflater li = LayoutInflater.from(this);
+        View vegDialog = li.inflate(R.layout.vegi_dialog,
+                null);
 
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setView(vegDialog);
-//                    alertDialogBuilder.setNegativeButton(getString(R.string.title_menu_share), new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            Intent sendIntent = new Intent();
-//                            sendIntent.setAction(Intent.ACTION_SEND);
-//                            sendIntent.putExtra(Intent.EXTRA_TEXT, evaluation.getSubject() + " - " + evaluation.getNumericValue());
-//                            sendIntent.setType("text/plain");
-//                            startActivity(sendIntent);
-//                        }
-//                    });
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(vegDialog);
+        vegidialog = alertDialogBuilder.create();
 
-            vegidialog = alertDialogBuilder.create();
+        if (vegiID == 0)
+            vegidialog.setTitle("Félévi");
+        else if (vegiID == 1)
+            vegidialog.setTitle("Évvégi");
 
-            if (vegiID == 0)
-                vegidialog.setTitle("Félévi");
-            else if (vegiID == 1)
-                vegidialog.setTitle("Évvégi");
+        vegidialog.show();
 
-            vegidialog.show();
-
-            ListView listvegi = vegidialog.findViewById(R.id.listvegi);
-            String[] items = new String[evaluationsfelevi.size()];
-            System.out.println(evaluationsfelevi.size());
-            for (Evaluation evaluation : evaluationsfelevi)
-                items[evaluationsfelevi.indexOf(evaluation)] = evaluation.getSubject() + "  -  " + evaluation.getNumericValue();
-            ArrayAdapter<String> itemsAdapter =
-                    new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, items);
-            listvegi.setAdapter(itemsAdapter);
-            listvegi.deferNotifyDataSetChanged();
-
-        } else if (!vegidialog.isShowing()) {
-            LayoutInflater li = LayoutInflater.from(this);
-            View evsDialog = li.inflate(R.layout.vegi_dialog,
-                    null);
-
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                    this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-            alertDialogBuilder.setView(evsDialog);
-//                    alertDialogBuilder.setNegativeButton(getString(R.string.title_menu_share), new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            Intent sendIntent = new Intent();
-//                            sendIntent.setAction(Intent.ACTION_SEND);
-//                            sendIntent.putExtra(Intent.EXTRA_TEXT, evaluation.getSubject() + " - " + evaluation.getNumericValue());
-//                            sendIntent.setType("text/plain");
-//                            startActivity(sendIntent);
-//                        }
-//                    });
-
-            vegidialog = alertDialogBuilder.create();
-            if (vegiID == 0)
-                vegidialog.setTitle("Félévi");
-            else if (vegiID == 1)
-                vegidialog.setTitle("Évvégi");
-            vegidialog.show();
-
-            ListView listvegi = vegidialog.findViewById(R.id.listvegi);
-            String[] items = new String[evaluationsfelevi.size()];
-            for (Evaluation evaluation : evaluationsfelevi)
-                items[evaluationsfelevi.indexOf(evaluation)] = evaluation.getSubject() + "  -  " + evaluation.getNumericValue();
-            ArrayAdapter<String> itemsAdapter =
-                    new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, items);
-            listvegi.setAdapter(itemsAdapter);
-
-        }
+        ListView listvegi = vegidialog.findViewById(R.id.listvegi);
+        String[] items = new String[evaluationsfelevi.size()];
+        System.out.println(evaluationsfelevi.size());
+        for (Evaluation evaluation : evaluationsfelevi)
+            items[evaluationsfelevi.indexOf(evaluation)] = evaluation.getSubject() + "  -  " + evaluation.getValue();
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, items);
+        listvegi.setAdapter(itemsAdapter);
+        listvegi.deferNotifyDataSetChanged();
     }
 
     public void EvaluationsDialog(final Evaluation evaluation) {
@@ -283,7 +234,6 @@ public class EvaluationListActivity extends AppCompatActivity {
             });
 
             dialog = alertDialogBuilder.create();
-//            dialog.setTitle(getString(R.string.evaluation_title));
             dialog.show();
 
             TextView valueTX = dialog.findViewById(R.id.valueTX);
@@ -310,7 +260,6 @@ public class EvaluationListActivity extends AppCompatActivity {
             } finally {
                 dateTX.setText(evaluation.getDate());
             }
-//            DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
 
         } else if (!dialog.isShowing()) {
             LayoutInflater li = LayoutInflater.from(this);
