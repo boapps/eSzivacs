@@ -4,10 +4,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,15 +19,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import io.github.boapps.eSzivacs.Adapters.TimetableLVAdapter;
 import io.github.boapps.eSzivacs.Datas.Lesson;
+import io.github.boapps.eSzivacs.Datas.Week;
 import io.github.boapps.eSzivacs.R;
 import io.github.boapps.eSzivacs.Utils.Themer;
 
@@ -35,6 +44,10 @@ public class Timetable extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    Date selectedDate = new Date();
+    private Button selectWeekBtn;
+    private ImageButton nextWeekBtn;
+    private ImageButton prevWeekBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +69,168 @@ public class Timetable extends AppCompatActivity {
             mViewPager.setCurrentItem(showDay - 1);
         else
             mViewPager.setCurrentItem(0);
+
+        selectWeekBtn = findViewById(R.id.selectWeekBtn);
+        nextWeekBtn = findViewById(R.id.nextWeekBtn);
+        prevWeekBtn = findViewById(R.id.prevWeekBtn);
+        selectWeekBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SelectDialog();
+            }
+        });
+        nextWeekBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendarNext = Calendar.getInstance();
+                calendarNext.setTime(selectedDate);
+                calendarNext.add(Calendar.DATE, 7);
+                selectedDate = calendarNext.getTime();
+                new Thread(new Runnable() {
+                    public void run() {
+                        loadNewWeek();
+                    }
+                }).start();
+            }
+        });
+        prevWeekBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendarNext = Calendar.getInstance();
+                calendarNext.setTime(selectedDate);
+                calendarNext.add(Calendar.DATE, -7);
+                selectedDate = calendarNext.getTime();
+                new Thread(new Runnable() {
+                    public void run() {
+                        loadNewWeek();
+                    }
+                }).start();
+            }
+        });
+    }
+
+    public int convertDayToNonRetard(int day) {
+        return day == 1 ? 7 : day - 1;
+    }
+
+    public void loadNewWeek() {
+
+        Calendar calendarFrom = Calendar.getInstance();
+        calendarFrom.setTime(selectedDate);
+        Calendar calendarTo = Calendar.getInstance();
+        calendarTo.setTime(selectedDate);
+
+        System.out.println("CALENDAR:");
+        calendarFrom.set(Calendar.DAY_OF_WEEK, 2); //THIS IS F* MONDAY
+        calendarTo.set(Calendar.DAY_OF_WEEK, 1); //THIS IS F* SUNDAY
+
+        System.out.println(convertDayToNonRetard(calendarFrom.get(Calendar.DAY_OF_WEEK)));
+        System.out.println(convertDayToNonRetard(calendarTo.get(Calendar.DAY_OF_WEEK)));
+
+/*
+        Date from = new Date();
+        Date to = selectedDate;
+        System.out.println("TIME: ");
+        System.out.println(from.getTime());
+
+        from.setTime(from.getTime());
+        from.setDate(from.getDate() - from.getDay() + 1);
+        to.setYear(from.getYear());
+        to.setMonth(from.getMonth());
+        to.setDate(from.getDate() + 6);
+        */
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        ArrayList<Lesson> lessons = new ArrayList<>();
+        lessons.clear();
+
+        System.out.println(calendarFrom.getTime().toString());
+        System.out.println(calendarTo.getTime().toString());
+        System.out.println("hello");
+
+        try {
+            lessons = MainPage.dloader.getTimetable(simpleDateFormat.format(calendarFrom.getTime()), simpleDateFormat.format(calendarTo.getTime()), MainPage.dloader.getBearerCode());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Lesson> lessonsm = new ArrayList<>();
+        ArrayList<Lesson> lessonst = new ArrayList<>();
+        ArrayList<Lesson> lessonsw = new ArrayList<>();
+        ArrayList<Lesson> lessonsth = new ArrayList<>();
+        ArrayList<Lesson> lessonsf = new ArrayList<>();
+
+        for (Lesson lesson : lessons) {
+            switch (lesson.getDate().getDay()) {
+                case 1:
+                    lessonsm.add(lesson);
+                    break;
+                case 2:
+                    lessonst.add(lesson);
+                    break;
+                case 3:
+                    lessonsw.add(lesson);
+                    break;
+                case 4:
+                    lessonsth.add(lesson);
+                    break;
+                case 5:
+                    lessonsf.add(lesson);
+                    break;
+            }
+        }
+
+        ttweek = new Week(calendarFrom.getTime(), lessonsm, lessonst, lessonsw, lessonsth, lessonsf);
+
+//        mViewPager.notifyAll();
+        mViewPager.post(new Runnable() {
+            public void run() {
+                mSectionsPagerAdapter.notifyDataSetChanged();
+            }
+        });
+
+    }
+
+    public void SelectDialog() {
+
+        Dialog selectDialogView;
+        LayoutInflater li = LayoutInflater.from(this);
+        View selDialog = li.inflate(R.layout.select_week_dialog,
+                null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setView(selDialog);
+        alertDialogBuilder.setPositiveButton("kiválaszt", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                new Thread(new Runnable() {
+                    public void run() {
+                        loadNewWeek();
+                    }
+                }).start();
+
+            }
+        });
+        selectDialogView = alertDialogBuilder.create();
+        selectDialogView.setTitle("Válassz egy hetet");
+        selectDialogView.show();
+
+        CalendarView calendarView = selectDialogView.findViewById(R.id.calendarView);
+        calendarView.setSelectedWeekBackgroundColor(Color.BLACK);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int selectedYear,
+                                            int selectedMonth, int selectedDay) {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy. MM. dd. ");
+                try {
+                    selectedDate = format.parse(selectedYear + ". " + (selectedMonth + 1) + ". " + selectedDay + ". ");
+                    selectWeekBtn.setText(selectedYear + ". " + (selectedMonth + 1) + ". " + selectedDay + ". ");
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -222,6 +397,10 @@ public class Timetable extends AppCompatActivity {
             super(fm);
         }
 
+        @Override
+        public int getItemPosition(Object object) {
+            return PagerAdapter.POSITION_NONE;
+        }
         @Override
         public Fragment getItem(int position) {
             return PlaceholderFragment.newInstance(position + 1);

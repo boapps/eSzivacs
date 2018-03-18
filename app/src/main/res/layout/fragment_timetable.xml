@@ -7,6 +7,7 @@
     android:layout_margin="5dp"
     android:elevation="3dp"
     android:orientation="vertical"
+    android:background="?attr/rippleref"
     tools:context="io.github.boapps.eSzivacs.Activities.Timetable$PlaceholderFragment">
 
     <TextView
@@ -16,7 +17,7 @@
         android:layout_margin="5dp"
         android:background="?android:attr/colorBackground"
         android:elevation="5dp"
-        android:padding="3dp"
+        android:padding="5dp"
         android:textSize="24sp" />
 
     <ListView

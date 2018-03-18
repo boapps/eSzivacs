@@ -23,7 +23,9 @@
             android:layout_height="80dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="Ha kapnék egy..." />
+            android:background="?attr/rippleref"
+            android:text="Ha kapnék egy..."
+            android:textColor="?attr/FontColor" />
 
         <Button
             android:id="@+id/button5"
@@ -31,6 +33,8 @@
             android:layout_height="80dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="Átlaghoz kell..." />
+            android:background="?attr/rippleref"
+            android:text="Átlaghoz kell..."
+            android:textColor="?attr/FontColor" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

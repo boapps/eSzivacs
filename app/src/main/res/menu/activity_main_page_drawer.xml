@@ -17,7 +17,7 @@
             android:title="@string/title_activity_evaluations" />
         <item
             android:id="@+id/milenneha"
-            android:icon="@drawable/ic_school_black_24px"
+            android:icon="@drawable/ic_playlist_add_black_24dp"
             android:title="Mi lenne ha..." />
         <item
             android:id="@+id/timetable"

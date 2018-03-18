@@ -23,7 +23,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -71,6 +71,7 @@ public class MainPage extends AppCompatActivity
     public static ArrayList<Absence> absences = new ArrayList<>();
     public static ArrayList<Subject> subjects = new ArrayList<>();
     public static Student user;
+    public static DataLoader dloader;
     private SharedPreferences sharedPreferences;
     private String usr;
     private String psw;
@@ -166,13 +167,22 @@ public class MainPage extends AppCompatActivity
             NavigationView navigationView = findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
 
-            Button moreBtn = findViewById(R.id.more_btn);
+            final Button moreBtn = findViewById(R.id.more_btn);
 
             moreBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), EvaluationListActivity.class);
+/*
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+//                        getWindow().setExitTransition(new Explode());
+                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainPage.this, (LinearLayout) mainEvalList.getParent(), "robot");
+                        startActivity(intent, options.toBundle());
+
+                    } else {*/
                     startActivity(intent);
+//                    }
                 }
             });
 
@@ -277,14 +287,13 @@ public class MainPage extends AppCompatActivity
             dateTX.setText(evaluation.getDate());
         }
     }
-
     public void progressTo(final int value) {
         loadProgress.post(new Runnable() {
             @Override
             public void run() {
                 ObjectAnimator progressAnimator = ObjectAnimator.ofInt(loadProgress, "progress", loadProgress.getProgress(), value);
                 progressAnimator.setDuration(200);
-                progressAnimator.setInterpolator(new LinearInterpolator());
+                progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
                 progressAnimator.start();
             }
         });
@@ -393,7 +402,7 @@ public class MainPage extends AppCompatActivity
         schoolCode = sharedPreferences.getString("schoolCode", "");
         schoolUrl = sharedPreferences.getString("schoolUrl", "");
 
-        DataLoader dloader = new DataLoader(getApplicationContext());
+        dloader = new DataLoader(getApplicationContext());
         dloader.setLogin(usr, psw, schoolUrl, schoolCode);
 
         mainEvalList = findViewById(R.id.main_evals);

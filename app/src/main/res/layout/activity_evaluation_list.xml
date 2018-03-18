@@ -10,29 +10,47 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="right"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="right"
             android:background="?attr/colorPrimary"
+            android:foregroundGravity="right"
             android:gravity="right"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <Button
-                android:id="@+id/felevi"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Félévi" />
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/evvegi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Évvégi" />
+                <Button
+                    android:id="@+id/felevi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="?attr/rippleref"
+                    android:text="Félévi"
+                    android:textColor="?attr/FontColor" />
+
+                <Button
+                    android:id="@+id/evvegi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="?attr/rippleref"
+                    android:text="Évvégi"
+                    android:textColor="?attr/FontColor" />
+
+            </LinearLayout>
+
 
         </android.support.v7.widget.Toolbar>
 

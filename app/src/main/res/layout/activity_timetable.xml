@@ -23,9 +23,46 @@
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/app_name">
+            app:title="Timetable">
 
         </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/prevWeekBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/rippleref"
+                android:tint="?attr/FontColor"
+
+                app:srcCompat="@drawable/ic_navigate_before_black_24dp" />
+
+            <Button
+                android:id="@+id/selectWeekBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/rippleref"
+                android:text="Válassz"
+
+                android:textColor="?attr/FontColor" />
+
+            <ImageButton
+                android:id="@+id/nextWeekBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/rippleref"
+                android:tint="?attr/FontColor"
+
+                app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
+        </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -33,6 +70,8 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </android.support.v4.view.ViewPager>
 
 </android.support.design.widget.CoordinatorLayout>

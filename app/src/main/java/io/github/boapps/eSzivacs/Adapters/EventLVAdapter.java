@@ -55,7 +55,11 @@ public class EventLVAdapter extends BaseAdapter {
         TextView valueTV = view.findViewById(R.id.value_tv);
         subjectTV.setText(events.get(i).getContent());
         dateTV.setText(events.get(i).getDate().toString());
-        ((LinearLayout) valueTV.getParent()).removeView(valueTV);
+        try {
+            ((LinearLayout) valueTV.getParent()).removeView(valueTV);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
         return view;
     }

@@ -27,6 +27,7 @@
         android:padding="5dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
+        android:tint="@color/colorAccent"
         app:srcCompat="@drawable/ic_close_black_24dp" />
 
 </LinearLayout>

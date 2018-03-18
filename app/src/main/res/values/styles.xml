@@ -1,6 +1,7 @@
 <resources>
     <!--<attr name="secondaryColorBackground" format="reference"/>-->
     <attr name="listFontColor" format="reference|color" />
+    <attr name="FontColor" format="reference|color" />
     <attr name="rippleref" format="reference" />
     <!--<attr name="" format="reference"/>-->
 
@@ -11,6 +12,7 @@
         <!--<item name="secondaryColorBackground">@color/color_secondary_background</item>-->
         <item name="rippleref">@drawable/ripple</item>
         <item name="listFontColor">@color/color_secondary_background_dark</item>
+        <item name="FontColor">@color/color_secondary_background_dark</item>
 
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -43,6 +45,7 @@
         <item name="rippleref">@drawable/ripple_dark</item>
 
         <item name="listFontColor">@color/color_secondary_background_dark</item>
+        <item name="FontColor">@color/text_color_secondary_dark</item>
         <item name="android:colorBackground">@color/color_background_dark</item>
         <item name="colorPrimary">@color/colorPrimary_dark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_dark</item>

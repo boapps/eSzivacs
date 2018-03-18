@@ -46,7 +46,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Sha
     public static final String ANALITICS_SWITCH = "analitics_switch";
     public static final String NOTIFICATION_SWITCH = "notifications_new_message";
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
-
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
@@ -140,7 +139,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Sha
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
-
     }
 
     /**
@@ -250,10 +248,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Sha
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            // handle the preference change here
-            System.out.println(sharedPreferences);
-            System.out.println(key);
-            System.out.println("onSharedPreferenceChanged run!");
             if (key.equals("notifications_new_message")) {
                 Boolean sync = sharedPreferences.getBoolean(SettingsActivity.NOTIFICATION_SWITCH, true);
                 if (sync)
@@ -324,11 +318,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Sha
             final Intent intent = new Intent(getActivity(), MainPage.class);
             getActivity().startActivity(intent);
 
-
             int id = item.getItemId();
-            System.out.println(id);
-            System.out.println(item.getTitle());
-//            System.out.println(item.);
             if (id == android.R.id.home) {
                 startActivity(new Intent(getActivity(), SettingsActivity.class));
                 return true;
@@ -340,7 +330,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Sha
         public void onResume() {
             super.onResume();
             getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(mListener);
-
         }
 
         @Override

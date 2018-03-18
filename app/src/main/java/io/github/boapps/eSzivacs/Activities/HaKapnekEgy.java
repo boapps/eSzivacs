@@ -24,6 +24,7 @@ import java.util.Date;
 import io.github.boapps.eSzivacs.Adapters.EditLVAdapter;
 import io.github.boapps.eSzivacs.Datas.Evaluation;
 import io.github.boapps.eSzivacs.R;
+import io.github.boapps.eSzivacs.Utils.Themer;
 
 import static io.github.boapps.eSzivacs.Activities.MainPage.evaluations;
 
@@ -38,6 +39,7 @@ public class HaKapnekEgy extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Themer.selectCurrentTheme(this);
         setContentView(R.layout.activity_ha_kapnek_egy);
 
         Toolbar toolbar = findViewById(R.id.toolbar);

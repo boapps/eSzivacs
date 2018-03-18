@@ -1,8 +1,10 @@
 package io.github.boapps.eSzivacs.Activities;
 
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -12,9 +14,24 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import io.github.boapps.eSzivacs.R;
+
 public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
     private AppCompatDelegate mDelegate;
+
+    @Override
+    protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
+        switch (Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString("sync_frequency", "1"))) {
+            case 1:
+                theme.applyStyle(R.style.AppTheme, true);
+                break;
+            case 2:
+                theme.applyStyle(R.style.Dark, true);
+                break;
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

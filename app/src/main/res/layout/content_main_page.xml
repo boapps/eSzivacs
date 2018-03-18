@@ -71,6 +71,7 @@
                     android:id="@+id/next_lesson_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#212121"
                     android:textSize="18sp" />
             </LinearLayout>
 

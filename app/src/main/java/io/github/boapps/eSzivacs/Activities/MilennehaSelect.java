@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import io.github.boapps.eSzivacs.Adapters.MilennehaAdapter;
 import io.github.boapps.eSzivacs.R;
+import io.github.boapps.eSzivacs.Utils.Themer;
 
 import static io.github.boapps.eSzivacs.Activities.MainPage.subjects;
 
@@ -23,6 +24,7 @@ public class MilennehaSelect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         System.out.print("CODERUNONCREATE");
         super.onCreate(savedInstanceState);
+        Themer.selectCurrentTheme(this);
         setContentView(R.layout.activity_milenneha_select);
         Button hakapna = findViewById(R.id.hakapna);
         hakapna.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +68,7 @@ public class MilennehaSelect extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapter, View v, int position, long l) {
                     Intent intent = new Intent(getApplicationContext(), HaKapnekEgy.class);
                     intent.putExtra("lesson", subjects.get(position).getSubject());
+
                     startActivity(intent);
                 }
             });

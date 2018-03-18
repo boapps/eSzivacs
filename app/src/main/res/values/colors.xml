@@ -8,7 +8,7 @@
     <color name="secondaryDarkColor">#a30000</color>
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#ffffff</color>
-    <color name="text_color_secondary">#424242</color>
+    <color name="text_color_secondary">#212121</color>
     <color name="color_secondary_background">#dfdfdf</color>
 
 
@@ -16,7 +16,7 @@
     <color name="color_background_dark">#2d2d2d</color>
     <color name="colorPrimary_dark">#585858</color>
     <color name="colorPrimaryDark_dark">#151515</color>
-    <color name="colorAccent_dark">#ffe628</color>
+    <color name="colorAccent_dark">#ffee6d</color>
     <color name="text_color_secondary_dark">#d2d2d2</color>
 
 
