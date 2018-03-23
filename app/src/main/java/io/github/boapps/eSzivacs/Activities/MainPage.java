@@ -235,7 +235,11 @@ public class MainPage extends AppCompatActivity
 //            dialog.setTitle("Evaluation");
             dialog.show();
             TextView valueTX = dialog.findViewById(R.id.valueTX);
-            valueTX.setText(evaluation.getNumericValue() + (evaluation.getWeight().replace("%", "").equals("100") ? "" : "(X" + (Integer.valueOf(evaluation.getWeight().replace("%", ""))) / 100 + ")"));
+            try {
+                valueTX.setText(evaluation.getNumericValue() + (evaluation.getWeight().replace("%", "").equals("100") ? "" : "(X" + (Integer.valueOf(evaluation.getWeight().replace("%", ""))) / 100 + ")"));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
 
             TextView subjectTX = dialog.findViewById(R.id.subjectTX);
             subjectTX.setText(evaluation.getSubject());
@@ -272,7 +276,11 @@ public class MainPage extends AppCompatActivity
 //            dialog.setTitle("Evaluation");
             dialog.show();
             TextView valueTX = dialog.findViewById(R.id.valueTX);
-            valueTX.setText(evaluation.getNumericValue() + (evaluation.getWeight().replace("%", "").equals("100") ? "" : "(X" + (Integer.valueOf(evaluation.getWeight().replace("%", ""))) / 100 + ")"));
+            try {
+                valueTX.setText(evaluation.getNumericValue() + (evaluation.getWeight().replace("%", "").equals("100") ? "" : "(X" + (Integer.valueOf(evaluation.getWeight().replace("%", ""))) / 100 + ")"));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
 
             TextView subjectTX = dialog.findViewById(R.id.subjectTX);
             subjectTX.setText(evaluation.getSubject());

@@ -6,13 +6,14 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 7
+      "versionCode": 9,
+      "versionName": "0.6.1",
+      "enabled": true,
+      "outputFile": "app-release.apk",
+      "fullName": "release",
+      "baseName": "release"
     },
     "path": "app-release.apk",
-    "properties": {
-      "packageId": "io.github.boapps.meSzivacs",
-      "split": "",
-      "minSdkVersion": "15"
-    }
+    "properties": {}
   }
 ]

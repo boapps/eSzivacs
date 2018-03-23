@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -159,8 +160,9 @@ public class BackgroundTaskService extends GcmTaskService {
                             NotificationCompat.Builder mBuilder =
                                     new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                                             .setSmallIcon(R.drawable.ic_school_black_24px)
-                                            .setContentTitle("Új jegy")
-                                            .setContentText(evaluation.getSubject() + " " + evaluation.getNumericValue());
+                                            .setContentTitle(evaluation.getSubject() + " " + evaluation.getNumericValue())
+                                            .setColor(Color.parseColor("#bf360c"))
+                                            .setContentText(evaluation.getTheme());
                             NotificationManager mNotificationManager =
                                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                             int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);

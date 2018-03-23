@@ -13,21 +13,29 @@ import io.github.boapps.eSzivacs.R;
 public class Themer {
 
     public static void selectCurrentTheme(Context context) {
-        switch (Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString("sync_frequency", "1"))) {
-            case 1:
-                context.setTheme(R.style.AppTheme);
-                break;
-            case 2:
-                context.setTheme(R.style.Dark);
-                break;
+        try {
+            switch (Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString("sync_frequency", "1"))) {
+                case 1:
+                    context.setTheme(R.style.AppTheme);
+                    break;
+                case 2:
+                    context.setTheme(R.style.Dark);
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
     }
 
     public static int getTextColor(Context context) {
-        switch (Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString("sync_frequency", "1"))) {
-//            case 1: return Color.BLACK;
-            case 2:
-                return Color.WHITE;
+        try {
+            switch (Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString("sync_frequency", "1"))) {
+                //            case 1: return Color.BLACK;
+                case 2:
+                    return Color.WHITE;
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
         return Color.BLACK;
     }
