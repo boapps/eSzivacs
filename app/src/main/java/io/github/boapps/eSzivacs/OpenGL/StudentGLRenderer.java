@@ -66,6 +66,8 @@ public class StudentGLRenderer implements GLSurfaceView.Renderer {
      * @param shaderCode - String containing the shader code.
      * @return - Returns an id for the shader.
      */
+
+
     public static int loadShader(int type, String shaderCode) {
 
         // create a vertex shader type (GLES20.GL_VERTEX_SHADER)

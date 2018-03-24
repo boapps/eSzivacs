@@ -21,6 +21,7 @@
         <activity
             android:name=".Activities.MainPage"
             android:label="@string/app_name"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +34,6 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".Activities.Timetable"
-            android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_timetable"
             android:parentActivityName=".Activities.MainPage"
             android:screenOrientation="portrait"

@@ -9,8 +9,8 @@ android {
         applicationId "io.github.boapps.meSzivacs"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 9
-        versionName "0.6.1"
+        versionCode 10
+        versionName "0.6.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -36,8 +36,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.google.android.gms:play-services-gcm:12.0.0'
-    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+    implementation 'com.google.android.gms:play-services-gcm:12.0.0'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
         transitive = true
     }
 

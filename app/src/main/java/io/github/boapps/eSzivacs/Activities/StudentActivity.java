@@ -43,7 +43,11 @@ public class StudentActivity extends AppCompatActivity {
             inst_tv.setText(getString(R.string.userinfo_institution, user.getInstName()));
             teacher_tv.setText(getString(R.string.userinfo_teacher, user.getTeacher().getName()));
         }
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        try {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         if (subjects.size() > 2) {
 
             chart = findViewById(R.id.chart);
@@ -70,12 +74,12 @@ public class StudentActivity extends AppCompatActivity {
                     return false;
                 }
             });
-            mGLViewst.post(new Runnable() {
+            /*  mGLViewst.post(new Runnable() {
 
                 @Override
                 public void run() {
 
-            /*    for (int n = 0; n < oldal; n++) {
+              for (int n = 0; n < oldal; n++) {
 //                            0, 0, 0,
 //                            (float) Math.cos(angle * n + Math.toRadians(270)), , 0,
 //                            (float) Math.cos(angle * (n+1) + Math.toRadians(270)), (float) Math.sin(angle * (n+1) + Math.toRadians(270)), 0
@@ -89,10 +93,10 @@ public class StudentActivity extends AppCompatActivity {
                     chart.addView(frameLayout);
 //                    frameLayout.getLayoutParams().width=100;
 
-                }*/
+                }
                 }
 
-            });
+            });*/
         }
 
 

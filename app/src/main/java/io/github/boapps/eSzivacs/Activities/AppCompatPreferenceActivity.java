@@ -22,13 +22,17 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
     @Override
     protected void onApplyThemeResource(Resources.Theme theme, int resid, boolean first) {
-        switch (Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString("sync_frequency", "1"))) {
-            case 1:
-                theme.applyStyle(R.style.AppTheme, true);
-                break;
-            case 2:
-                theme.applyStyle(R.style.Dark, true);
-                break;
+        try {
+            switch (Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString("sync_frequency", "1"))) {
+                case 1:
+                    theme.applyStyle(R.style.AppTheme, true);
+                    break;
+                case 2:
+                    theme.applyStyle(R.style.Dark, true);
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
 
     }
